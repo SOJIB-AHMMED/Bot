@@ -177,6 +177,7 @@
       // Close accordion
       header.classList.remove('active');
       content.classList.remove('active');
+      content.style.maxHeight = '';
       state.openAccordions.delete(accordionId);
     } else {
       // Open accordion

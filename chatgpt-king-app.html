@@ -360,6 +360,18 @@
     
     <!-- App-specific JavaScript -->
     <script>
+        // Simulated AI responses
+        const AI_RESPONSES = {
+            'Tell me a joke': '😄 Why did the AI go to school? To improve its learning algorithms!',
+            'Explain quantum computing': '🔬 Quantum computing uses quantum bits (qubits) that can exist in multiple states simultaneously, allowing for vastly more powerful computations than classical computers.',
+            'Write a poem': '✍️ In circuits deep and code so bright,\nAI dreams throughout the night,\nProcessing thoughts at speed of light,\nBringing knowledge, pure delight.',
+            'Summarize my last conversation': '📝 Your last conversation covered AI capabilities and platform features.',
+            'Use advanced reasoning': '⭐ Advanced reasoning mode activated. I can now perform complex multi-step analysis.',
+            'Show system stats': '📊 System Status: ✅ All systems operational. Users: 10,234 active. Uptime: 99.9%'
+        };
+
+        const AI_RESPONSE_DELAY = 1000;
+
         // Simple chat functionality for demo
         function insertPrompt(text) {
             const input = document.getElementById('chatInput');
@@ -392,23 +404,14 @@
                 
                 // Scroll to bottom
                 messageArea.scrollTop = messageArea.scrollHeight;
-            }, 1000);
+            }, AI_RESPONSE_DELAY);
 
             // Scroll to bottom
             messageArea.scrollTop = messageArea.scrollHeight;
         }
 
         function getSimulatedResponse(userMessage) {
-            const responses = {
-                'Tell me a joke': '😄 Why did the AI go to school? To improve its learning algorithms!',
-                'Explain quantum computing': '🔬 Quantum computing uses quantum bits (qubits) that can exist in multiple states simultaneously, allowing for vastly more powerful computations than classical computers.',
-                'Write a poem': '✍️ In circuits deep and code so bright,\nAI dreams throughout the night,\nProcessing thoughts at speed of light,\nBringing knowledge, pure delight.',
-                'Summarize my last conversation': '📝 Your last conversation covered AI capabilities and platform features.',
-                'Use advanced reasoning': '⭐ Advanced reasoning mode activated. I can now perform complex multi-step analysis.',
-                'Show system stats': '📊 System Status: ✅ All systems operational. Users: 10,234 active. Uptime: 99.9%'
-            };
-
-            return responses[userMessage] || `I understand you said: "${userMessage}". This is a demo, so I'm showing simulated responses. In a real implementation, this would connect to an AI API.`;
+            return AI_RESPONSES[userMessage] || `I understand you said: "${userMessage}". This is a demo, so I'm showing simulated responses. In a real implementation, this would connect to an AI API.`;
         }
 
         // Handle Enter key in input
