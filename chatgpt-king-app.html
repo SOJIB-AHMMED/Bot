@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHATGPT KING - App</title>
+    <meta name="description" content="CHATGPT KING App - Start your AI conversation">
+    <link rel="stylesheet" href="core.css">
+    <style>
+        /* App-specific styles */
+        .chat-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: var(--spacing-xl);
+            border-radius: 12px;
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .chat-interface {
+            background-color: var(--surface-color);
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            min-height: 400px;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .message-area {
+            background-color: var(--background-color);
+            border-radius: 8px;
+            padding: var(--spacing-lg);
+            min-height: 300px;
+            margin-bottom: var(--spacing-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .message {
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+
+        .message-user {
+            background-color: var(--primary-color);
+            color: white;
+            margin-left: auto;
+            max-width: 80%;
+            text-align: right;
+        }
+
+        .message-ai {
+            background-color: var(--surface-color);
+            color: var(--text-primary);
+            margin-right: auto;
+            max-width: 80%;
+        }
+
+        .input-area {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: var(--font-size-base);
+            font-family: var(--font-family);
+        }
+
+        .chat-input:focus {
+            outline: 2px solid var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .send-button {
+            padding: var(--spacing-md) var(--spacing-xl);
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color var(--transition-fast);
+        }
+
+        .send-button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .quick-action {
+            padding: var(--spacing-md);
+            background-color: var(--background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all var(--transition-fast);
+        }
+
+        .quick-action:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .message-user,
+            .message-ai {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="chatgpt-king-root.html" class="header-logo">
+                <span>👑</span>
+                <span>CHATGPT KING</span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="header-nav">
+                <a href="chatgpt-king-root.html" class="header-nav-link">Home</a>
+                <a href="chatgpt-king-app.html" class="header-nav-link">App</a>
+                <a href="#history" class="header-nav-link role-member">History</a>
+                <a href="#settings" class="header-nav-link role-member">Settings</a>
+                <a href="#analytics" class="header-nav-link role-admin">Analytics</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="btn btn-primary btn-sm role-guest">Sign In</button>
+                <button class="btn btn-secondary btn-sm role-member">Profile</button>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <div class="menu-toggle-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Off-Canvas Drawer -->
+    <div class="drawer-overlay"></div>
+    <aside class="drawer">
+        <div class="drawer-header">
+            <h2 class="drawer-title">Menu</h2>
+            <button class="drawer-close" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="drawer-body">
+            <nav>
+                <ul class="drawer-nav">
+                    <li class="drawer-nav-item">
+                        <a href="chatgpt-king-root.html" class="drawer-nav-link">🏠 Home</a>
+                    </li>
+                    <li class="drawer-nav-item">
+                        <a href="chatgpt-king-app.html" class="drawer-nav-link">🚀 App</a>
+                    </li>
+                    <li class="drawer-nav-item">
+                        <a href="#new-chat" class="drawer-nav-link">💬 New Chat</a>
+                    </li>
+                    <li class="drawer-nav-item role-member">
+                        <a href="#history" class="drawer-nav-link">📜 Chat History</a>
+                    </li>
+                    <li class="drawer-nav-item role-member">
+                        <a href="#settings" class="drawer-nav-link">⚙️ Settings</a>
+                    </li>
+                    <li class="drawer-nav-item role-pro">
+                        <a href="#models" class="drawer-nav-link">🤖 AI Models</a>
+                    </li>
+                    <li class="drawer-nav-item role-admin">
+                        <a href="#analytics" class="drawer-nav-link">📊 Analytics</a>
+                    </li>
+                    <li class="drawer-nav-item role-admin">
+                        <a href="#users" class="drawer-nav-link">👥 User Management</a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- Role Selector (for demo purposes) -->
+            <div class="card mt-md">
+                <label for="roleSelector" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-secondary); font-size: 0.875rem;">
+                    Demo: Select Your Role
+                </label>
+                <select id="roleSelector" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1rem;">
+                    <option value="guest">Guest</option>
+                    <option value="member">Member</option>
+                    <option value="pro">Pro Member</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container chat-container">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <h1 style="margin-bottom: var(--spacing-sm); font-size: var(--font-size-2xl);">
+                    🤖 AI Chat Assistant
+                </h1>
+                <p style="opacity: 0.9;">
+                    Start a conversation with CHATGPT KING
+                </p>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <div class="quick-action" onclick="insertPrompt('Tell me a joke')">
+                    😄 Tell me a joke
+                </div>
+                <div class="quick-action" onclick="insertPrompt('Explain quantum computing')">
+                    🔬 Explain a concept
+                </div>
+                <div class="quick-action" onclick="insertPrompt('Write a poem')">
+                    ✍️ Write a poem
+                </div>
+                <div class="quick-action role-member" onclick="insertPrompt('Summarize my last conversation')">
+                    📝 Summarize chat
+                </div>
+                <div class="quick-action role-pro" onclick="insertPrompt('Use advanced reasoning')">
+                    ⭐ Advanced mode
+                </div>
+                <div class="quick-action role-admin" onclick="insertPrompt('Show system stats')">
+                    📊 System stats
+                </div>
+            </div>
+
+            <!-- Chat Interface -->
+            <div class="chat-interface">
+                <div class="message-area" id="messageArea">
+                    <div class="message message-ai">
+                        Hello! I'm your AI assistant. How can I help you today?
+                    </div>
+                </div>
+
+                <div class="input-area">
+                    <input 
+                        type="text" 
+                        class="chat-input" 
+                        id="chatInput" 
+                        placeholder="Type your message..."
+                        aria-label="Chat input"
+                    >
+                    <button class="send-button" id="sendButton" onclick="sendMessage()">
+                        Send
+                    </button>
+                </div>
+            </div>
+
+            <!-- Feature Info Accordions -->
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>💡 Getting Started</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Simply type your question or request in the input field and press Send.
+                            You can ask about anything - from simple questions to complex topics.
+                            The AI will respond with helpful, accurate information.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item role-member">
+                    <button class="accordion-header">
+                        <span>🎯 Member Features</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            As a member, you can save your chat history, access previous conversations,
+                            and enjoy longer context windows for more detailed discussions. Your
+                            preferences are automatically saved across sessions.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item role-pro">
+                    <button class="accordion-header">
+                        <span>⭐ Pro Capabilities</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Pro members get access to advanced AI models, priority processing,
+                            unlimited message history, and exclusive features like code execution,
+                            image analysis, and document processing. Enjoy the full power of AI!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item role-admin">
+                    <button class="accordion-header">
+                        <span>⚙️ Admin Tools</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Administrators have full access to platform analytics, user management,
+                            system configuration, and monitoring tools. View real-time usage statistics,
+                            manage user permissions, and configure AI model settings.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back to Home -->
+            <div class="card mt-md" style="margin-top: var(--spacing-2xl);">
+                <h3 class="card-title">🌐 Navigation</h3>
+                <p class="card-text mb-md">
+                    This is the App subdomain. Navigate back to other areas:
+                </p>
+                <div class="flex gap-md" style="flex-wrap: wrap;">
+                    <a href="chatgpt-king-root.html" class="btn btn-secondary btn-sm">🏠 Back to Home</a>
+                    <a href="#settings" class="btn btn-secondary btn-sm role-member">⚙️ Settings</a>
+                    <a href="#admin" class="btn btn-secondary btn-sm role-admin">👑 Admin Panel</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background-color: var(--surface-color); padding: var(--spacing-xl) 0; margin-top: var(--spacing-2xl); border-top: 1px solid var(--border-color);">
+        <div class="container text-center">
+            <p style="color: var(--text-secondary); margin-bottom: var(--spacing-sm);">
+                &copy; 2025 CHATGPT KING. App Subdomain.
+            </p>
+            <p style="color: var(--text-secondary); font-size: var(--font-size-sm);">
+                Mobile-first • Responsive • Role-based access
+            </p>
+        </div>
+    </footer>
+
+    <!-- Core JavaScript -->
+    <script src="core.js"></script>
+    
+    <!-- App-specific JavaScript -->
+    <script>
+        // Simulated AI responses
+        const AI_RESPONSES = {
+            'Tell me a joke': '😄 Why did the AI go to school? To improve its learning algorithms!',
+            'Explain quantum computing': '🔬 Quantum computing uses quantum bits (qubits) that can exist in multiple states simultaneously, allowing for vastly more powerful computations than classical computers.',
+            'Write a poem': '✍️ In circuits deep and code so bright,\nAI dreams throughout the night,\nProcessing thoughts at speed of light,\nBringing knowledge, pure delight.',
+            'Summarize my last conversation': '📝 Your last conversation covered AI capabilities and platform features.',
+            'Use advanced reasoning': '⭐ Advanced reasoning mode activated. I can now perform complex multi-step analysis.',
+            'Show system stats': '📊 System Status: ✅ All systems operational. Users: 10,234 active. Uptime: 99.9%'
+        };
+
+        const AI_RESPONSE_DELAY = 1000;
+
+        // Simple chat functionality for demo
+        function insertPrompt(text) {
+            const input = document.getElementById('chatInput');
+            input.value = text;
+            input.focus();
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messageArea = document.getElementById('messageArea');
+            const messageText = input.value.trim();
+
+            if (!messageText) return;
+
+            // Add user message
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message message-user';
+            userMessage.textContent = messageText;
+            messageArea.appendChild(userMessage);
+
+            // Clear input
+            input.value = '';
+
+            // Simulate AI response
+            setTimeout(() => {
+                const aiMessage = document.createElement('div');
+                aiMessage.className = 'message message-ai';
+                aiMessage.textContent = getSimulatedResponse(messageText);
+                messageArea.appendChild(aiMessage);
+                
+                // Scroll to bottom
+                messageArea.scrollTop = messageArea.scrollHeight;
+            }, AI_RESPONSE_DELAY);
+
+            // Scroll to bottom
+            messageArea.scrollTop = messageArea.scrollHeight;
+        }
+
+        function getSimulatedResponse(userMessage) {
+            return AI_RESPONSES[userMessage] || `I understand you said: "${userMessage}". This is a demo, so I'm showing simulated responses. In a real implementation, this would connect to an AI API.`;
+        }
+
+        // Handle Enter key in input
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

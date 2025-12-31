@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHATGPT KING - Home</title>
+    <meta name="description" content="CHATGPT KING - Advanced AI-powered platform for everyone">
+    <link rel="stylesheet" href="core.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="chatgpt-king-root.html" class="header-logo">
+                <span>👑</span>
+                <span>CHATGPT KING</span>
+            </a>
+            
+            <!-- Desktop Navigation (hidden on mobile) -->
+            <nav class="header-nav">
+                <a href="chatgpt-king-root.html" class="header-nav-link">Home</a>
+                <a href="#features" class="header-nav-link">Features</a>
+                <a href="chatgpt-king-app.html" class="header-nav-link">App</a>
+                <a href="#pricing" class="header-nav-link role-guest">Pricing</a>
+                <a href="#dashboard" class="header-nav-link role-member">Dashboard</a>
+                <a href="#admin" class="header-nav-link role-admin">Admin</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="btn btn-primary btn-sm role-guest">Sign In</button>
+                <button class="btn btn-secondary btn-sm role-member">Profile</button>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <div class="menu-toggle-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Off-Canvas Drawer -->
+    <div class="drawer-overlay"></div>
+    <aside class="drawer">
+        <div class="drawer-header">
+            <h2 class="drawer-title">Menu</h2>
+            <button class="drawer-close" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="drawer-body">
+            <nav>
+                <ul class="drawer-nav">
+                    <li class="drawer-nav-item">
+                        <a href="chatgpt-king-root.html" class="drawer-nav-link">🏠 Home</a>
+                    </li>
+                    <li class="drawer-nav-item">
+                        <a href="#features" class="drawer-nav-link">✨ Features</a>
+                    </li>
+                    <li class="drawer-nav-item">
+                        <a href="chatgpt-king-app.html" class="drawer-nav-link">🚀 App</a>
+                    </li>
+                    <li class="drawer-nav-item role-guest">
+                        <a href="#pricing" class="drawer-nav-link">💎 Pricing</a>
+                    </li>
+                    <li class="drawer-nav-item role-guest">
+                        <a href="#signin" class="drawer-nav-link">🔐 Sign In</a>
+                    </li>
+                    <li class="drawer-nav-item role-member">
+                        <a href="#dashboard" class="drawer-nav-link">📊 Dashboard</a>
+                    </li>
+                    <li class="drawer-nav-item role-pro">
+                        <a href="#pro-features" class="drawer-nav-link">⭐ Pro Features</a>
+                    </li>
+                    <li class="drawer-nav-item role-admin">
+                        <a href="#admin" class="drawer-nav-link">⚙️ Admin Panel</a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- Role Selector (for demo purposes) -->
+            <div class="card mt-md">
+                <label for="roleSelector" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-secondary); font-size: 0.875rem;">
+                    Demo: Select Your Role
+                </label>
+                <select id="roleSelector" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1rem;">
+                    <option value="guest">Guest</option>
+                    <option value="member">Member</option>
+                    <option value="pro">Pro Member</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">Welcome to CHATGPT KING 👑</h1>
+                <p class="hero-subtitle">
+                    Your ultimate AI-powered platform for next-generation conversations
+                </p>
+                <div class="flex gap-md" style="justify-content: center; flex-wrap: wrap;">
+                    <a href="chatgpt-king-app.html" class="btn btn-primary">Launch App</a>
+                    <a href="#features" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="container">
+            <h2 class="text-center mb-lg" style="font-size: 2rem; font-weight: 700;">Features</h2>
+            
+            <!-- Feature Cards -->
+            <div style="display: grid; gap: var(--spacing-md); margin-bottom: var(--spacing-xl);">
+                <div class="card">
+                    <h3 class="card-title">🚀 Lightning Fast</h3>
+                    <p class="card-text">
+                        Experience blazing-fast responses powered by advanced AI technology.
+                        Our platform is optimized for speed and efficiency.
+                    </p>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">📱 Mobile First</h3>
+                    <p class="card-text">
+                        Built with mobile devices in mind. Enjoy a seamless experience
+                        across all your devices - phone, tablet, or desktop.
+                    </p>
+                </div>
+                
+                <div class="card role-member">
+                    <h3 class="card-title">🎯 Personalized Experience</h3>
+                    <p class="card-text">
+                        As a member, enjoy personalized AI interactions tailored to your
+                        preferences and history.
+                    </p>
+                </div>
+                
+                <div class="card role-pro">
+                    <h3 class="card-title">⭐ Pro Features</h3>
+                    <p class="card-text">
+                        Unlock advanced capabilities including priority access, extended
+                        context, and exclusive models.
+                    </p>
+                </div>
+                
+                <div class="card role-admin">
+                    <h3 class="card-title">⚙️ Admin Controls</h3>
+                    <p class="card-text">
+                        Full administrative access to manage users, monitor usage,
+                        and configure platform settings.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Accordions Section -->
+            <h2 class="text-center mb-lg" style="font-size: 2rem; font-weight: 700;">Frequently Asked Questions</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>What is CHATGPT KING?</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            CHATGPT KING is a cutting-edge AI platform that provides intelligent
+                            conversational experiences. Built with mobile-first design principles,
+                            it offers seamless access across all devices while maintaining high
+                            performance and user privacy.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>How does role-based access work?</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Our platform offers different access levels: Guest (free tier with basic features),
+                            Member (registered users with enhanced capabilities), Pro (premium features and
+                            priority access), and Admin (full platform management). Each role unlocks
+                            progressively more features and capabilities.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Is it mobile-friendly?</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Absolutely! CHATGPT KING is built with a mobile-first approach, ensuring
+                            optimal performance on smartphones and tablets. The interface adapts
+                            beautifully to any screen size, with touch-friendly controls and
+                            responsive layouts.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>What about privacy and security?</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            We take privacy seriously. All communications are encrypted, and we never
+                            share your data with third parties. Your conversations remain private,
+                            and you have full control over your data with options to export or delete
+                            at any time.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subdomain Navigation Demo -->
+            <div class="card mt-md" style="margin-top: var(--spacing-2xl);">
+                <h3 class="card-title">🌐 Multi-Subdomain Platform</h3>
+                <p class="card-text mb-md">
+                    CHATGPT KING is built as a multi-subdomain platform. Navigate between
+                    different areas of the platform:
+                </p>
+                <div class="flex gap-md" style="flex-wrap: wrap;">
+                    <a href="chatgpt-king-root.html" class="btn btn-secondary btn-sm">🏠 Root Domain (Home)</a>
+                    <a href="chatgpt-king-app.html" class="btn btn-primary btn-sm">🚀 App Subdomain</a>
+                </div>
+                <p style="margin-top: var(--spacing-md); font-size: var(--font-size-sm); color: var(--text-secondary);">
+                    Note: In a real deployment, these would be separate subdomains (e.g., chatgptking.com and app.chatgptking.com).
+                    For this demo, we're using different HTML files to simulate the subdomain structure.
+                </p>
+            </div>
+        </section>
+
+        <!-- Role-Based Content -->
+        <section class="container" style="margin-top: var(--spacing-2xl);">
+            <div class="card role-guest">
+                <h3 class="card-title">👋 Welcome, Guest!</h3>
+                <p class="card-text">
+                    You're currently viewing as a guest. Sign up to unlock more features
+                    and personalize your experience!
+                </p>
+                <button class="btn btn-primary mt-md">Get Started Free</button>
+            </div>
+
+            <div class="card role-member">
+                <h3 class="card-title">🎉 Welcome back, Member!</h3>
+                <p class="card-text">
+                    Great to see you again! You have access to all member features.
+                    Consider upgrading to Pro for even more capabilities.
+                </p>
+                <button class="btn btn-primary mt-md">Upgrade to Pro</button>
+            </div>
+
+            <div class="card role-pro">
+                <h3 class="card-title">⭐ Welcome, Pro Member!</h3>
+                <p class="card-text">
+                    You have access to all premium features. Enjoy priority support,
+                    advanced AI models, and exclusive content.
+                </p>
+                <button class="btn btn-primary mt-md">Explore Pro Features</button>
+            </div>
+
+            <div class="card role-admin">
+                <h3 class="card-title">⚙️ Admin Dashboard</h3>
+                <p class="card-text">
+                    You have full administrative access. Manage users, view analytics,
+                    and configure platform settings.
+                </p>
+                <button class="btn btn-primary mt-md">Go to Admin Panel</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background-color: var(--surface-color); padding: var(--spacing-xl) 0; margin-top: var(--spacing-2xl); border-top: 1px solid var(--border-color);">
+        <div class="container text-center">
+            <p style="color: var(--text-secondary); margin-bottom: var(--spacing-sm);">
+                &copy; 2025 CHATGPT KING. Built with ❤️ using vanilla HTML, CSS, and JavaScript.
+            </p>
+            <p style="color: var(--text-secondary); font-size: var(--font-size-sm);">
+                Mobile-first • Multi-subdomain • Role-based access
+            </p>
+        </div>
+    </footer>
+
+    <!-- Core JavaScript -->
+    <script src="core.js"></script>
+</body>
+</html>
